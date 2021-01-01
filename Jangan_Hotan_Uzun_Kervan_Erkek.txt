@@ -12,7 +12,7 @@ teleport,Donwhang,Jangan
 wait,5000
 dismount
 wait,2000
-equip,Beginner Warrior Outfit (F)
+equip,Beginner Warrior Outfit (M)
 wait,5000
 walk,6446,1074,-32
 walk,6453,1056,-32
@@ -333,5 +333,5 @@ terminate,transport
 wait,2000
 walk,126,31,244
 walk,116,36,244
-unequip,Beginner Warrior Outfit (F)
+unequip,Beginner Warrior Outfit (M)
 wait,5000
