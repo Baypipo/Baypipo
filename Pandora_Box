@@ -1,0 +1,40 @@
+from phBot import *
+import struct
+
+pName = 'Pandora_Box'
+pVersion = '1.0.0'
+#Yapımcı : TRSRO > Troya > Bay_Pipo
+
+def GetItemByExpression(_lambda):
+	items = get_inventory()['items']
+	for slot, item in enumerate(items):
+		if item:
+			# Search by lambda
+			if _lambda(item['name'],item['servername']):
+				# Save slot location
+				item['slot'] = slot
+				return item
+	return 0
+
+ 
+def Adrees_Bul_MS():
+	item = GetItemByExpression(lambda n,s: s.startswith('ITEM_ETC_E060517_MON_GENERATION_BOX')) # Pandora ürün kod ismi
+	if item:
+		global p
+		p = struct.pack('B',item['slot'])  # çantada sıra no
+		p += b'\x30\x0C\x0F\x01'  # Data adresi
+ 
+       
+	else:
+		# Start bot and get back to town
+		log('Plugin: MS Çantada Kalmamıs')
+      
+ 
+ 
+def Pandora_Box(arguments):
+     Adrees_Bul_MS()
+     # MS
+     inject_joymax(0x704C,p,True)
+ 
+# Plugin loaded
+log('[%s] Loaded' % __name__)
